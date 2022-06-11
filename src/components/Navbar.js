@@ -7,15 +7,16 @@ import "../styles/Navbar.css"
 const Navbar = () => {
     return (
         <div className="navbar">
-            <div>
+            <div className="logo">
                 <img src={logo}/>
             </div>
-            <div>
+            <div className="pages_links">
                 <Link to="/">Live</Link>
                 <Link to="/About">About</Link>
                 <Link to="/Contact">Contact</Link>
                 <Link to="/Help">Help</Link>
             </div>
+            <button className="connect_wallet_button">Connect Wallet</button>
         </div>
     );
 };

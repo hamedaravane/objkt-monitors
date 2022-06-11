@@ -1,102 +1,70 @@
-.navbar {
-    width: 100%;
-    height: 100px;
-    background-color: #121619;
+.navbar{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 75px;
+
+    position: absolute;
+    width: 100%;
+    height: 62px;
+    left: 0px;
+    top: 0px;
+
+    background: #464646;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.navbar .leftSide {
-    flex: 50%;
-    height: 100%;
+.logo img{
+    width: auto;
+    height: 32px;
+}
+
+.pages_links{
     display: flex;
     align-items: center;
-    padding-left: 150px;
+    padding: 0px;
+    gap: 50px;
+
+    width: 29px;
+    height: 21px;
+
 }
 
-.navbar .leftSide img {
-    width: 70px;
+a{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 150%;
+
+    color: #F7F7F7;
+
 }
+.connect_wallet_button{
 
-.navbar .rightSide {
-    flex: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    padding: 5px 10px;
+    gap: 10px;
 
-.navbar a {
-    color: white;
-    text-decoration: none;
-    margin: 20px;
-}
+    width: 127px;
+    height: 31px;
 
-.navbar .rightSide button {
-    background-color: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
+    background: #528DFF;
+    border-radius: 5px;
 
-.navbar .rightSide svg {
-    font-size: 40px;
-}
+    flex: none;
+    order: 2;
+    flex-grow: 0;
 
-.navbar #open {
-    padding-left: 0px;
-}
-.navbar #open img {
-    display: none;
-}
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 150%;
 
-.navbar #close img {
-    display: inherit;
-}
+    color: #F7F7F7;
 
-.navbar #open .hiddenLinks {
-    display: inherit;
-    margin-left: 30px;
-}
-
-.navbar #close .hiddenLinks {
-    display: none;
-}
-
-.navbar #open a {
-    width: 70px;
-    margin: 5px;
-}
-@media only screen and (max-width: 900px) {
-    .navbar .rightSide a {
-        width: 70px;
-    }
-    .navbar .leftSide {
-        padding-left: 50px;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .navbar .rightSide a {
-        display: none;
-    }
-
-    .navbar .rightSide {
-        justify-content: flex-end;
-        padding-right: 50px;
-    }
-
-    .navbar .rightSide button {
-        display: inherit;
-    }
-}
-
-@media only screen and (min-width: 600px) {
-    .navbar .rightSide button {
-        display: none;
-    }
-
-    .hiddenLinks {
-        display: none;
-    }
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 }
