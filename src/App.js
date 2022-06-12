@@ -2,6 +2,7 @@ import './App.css';
 import Navbar from "./components/Navbar";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Live from "./pages/Live"
+import Objkt from "./components/Objkt";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                     <Route path='/' exact element={<Live/>}/>
                 </Routes>
             </Router>
+            <Objkt/>
         </div>
     );
 }

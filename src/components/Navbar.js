@@ -9,6 +9,7 @@ const Navbar = () => {
         <div className="navbar">
             <div className="logo">
                 <img src={logo}/>
+                <p>Tezos NFT Analytic</p>
             </div>
             <div className="pages_links">
                 <Link to="/">Live</Link>
