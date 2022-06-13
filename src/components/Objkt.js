@@ -12,7 +12,7 @@ const Objkt = (props) => {
         case 'hic et nunc NFTs':
             marketplace = "hic et nunc";
             break;
-        case null:
+        case undefined:
             marketplace = "OBJKT.com";
             break;
         case 'akaSwap NFTs':
@@ -25,7 +25,7 @@ const Objkt = (props) => {
             marketplace = "Versum";
             break;
         default:
-            marketplace = "unknown";
+            marketplace = props.data.contract.alias;
     }
 
     let creatorText = ''
@@ -43,6 +43,8 @@ const Objkt = (props) => {
 
     const marketUrl = "https://objkt.com/asset/" + props.data.contract.address + "/" + props.data.tokenId;
 
+    const marketArtistUrl = "https://nftbiker.xyz/artist?wallet=" + props.data.metadata.creators;
+
     let royalityShares = 0
     if (props.data.metadata.royalties) {
         const royality = props.data.metadata.royalties.shares;
@@ -51,13 +53,20 @@ const Objkt = (props) => {
         }
     }
 
+    let  price = 0;
+    if (props.data.balancesCount){
+        price = props.data.balancesCount;
+    }
+
     return (
         <div className='objkt'>
             <a href={marketUrl} target="_blank" rel="noopener noreferrer">
                 <img className="image" src={imageUri}/>
             </a>
             <div className='creator_and_edition'>
-                <p>{creatorText}</p>
+                <a href={marketArtistUrl} target="_blank" rel="noopener noreferrer">
+                    <p>{creatorText}</p>
+                </a>
                 <p>{props.data.totalMinted} ed.</p>
             </div>
             <div className='marketplace_and_royality'>
@@ -83,7 +92,7 @@ const Objkt = (props) => {
                     <p>34%</p>
                 </div>
             </div>
-            <button className='buy_button'>2tz</button>
+            <button className='buy_button'>{price}tz</button>
         </div>
     );
 };
