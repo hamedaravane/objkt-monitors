@@ -3,8 +3,22 @@ import Navbar from "./components/Navbar";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Live from "./pages/Live"
 import Objkt from "./components/Objkt";
+import {useState, useEffect} from "react";
 
 function App() {
+    const [content, setContent] = useState([])
+
+    const fetchData = async () => {
+        const response = await fetch("https://staging.api.tzkt.io/v1/tokens?sort.desc=lastLevel&metadata.displayUri.ne=true&limit=12")
+        const data = await response.json()
+        setContent(data)
+    }
+
+
+    useEffect(() => {
+        fetchData()
+    })
+
     return (
         <div className="App">
             <Router>
@@ -13,7 +27,11 @@ function App() {
                     <Route path='/' exact element={<Live/>}/>
                 </Routes>
             </Router>
-            <Objkt/>
+
+            <div className='layout'>
+                {content.map(x => <Objkt data={x} key={x.id}/>)}
+            </div>
+
         </div>
     );
 }
