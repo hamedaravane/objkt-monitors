@@ -9,7 +9,7 @@ function App() {
     const [content, setContent] = useState([])
 
     const fetchData = async () => {
-        const response = await fetch("https://staging.api.tzkt.io/v1/tokens?sort.desc=lastLevel&metadata.displayUri.ne=true&limit=12")
+        const response = await fetch("https://staging.api.tzkt.io/v1/tokens?sort.desc=lastLevel&contract.ni=KT1ViVwoVfGSCsDaxjwoovejm1aYSGz7s2TZ&metadata.displayUri.ne=true&limit=12")
         const data = await response.json()
         setContent(data)
     }

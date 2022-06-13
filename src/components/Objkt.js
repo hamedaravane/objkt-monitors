@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Objkt.css'
-import photo from '../assets/nft.png'
+import {Link} from "react-router-dom";
 
 const Objkt = (props) => {
 
@@ -20,9 +20,6 @@ const Objkt = (props) => {
             break;
         case 'FXHASH GENTK v2':
             marketplace = "fxhash";
-            break;
-        case 'Tezotopia NFT Registry':
-            marketplace = "Tezotopia";
             break;
         case 'Versum Items':
             marketplace = "Versum";
@@ -44,17 +41,28 @@ const Objkt = (props) => {
         creatorText = 'generative'
     }
 
+    const marketUrl = "https://objkt.com/asset/" + props.data.contract.address + "/" + props.data.tokenId;
+
+    let royalityShares = 0
+    if (props.data.metadata.royalties) {
+        const royality = props.data.metadata.royalties.shares;
+        for (let i in royality) {
+            royalityShares += royality[i]
+        }
+    }
+
     return (
         <div className='objkt'>
-            <img src={imageUri}/>
-
+            <a href={marketUrl} target="_blank" rel="noopener noreferrer">
+                <img className="image" src={imageUri}/>
+            </a>
             <div className='creator_and_edition'>
                 <p>{creatorText}</p>
-                <p>12/35 ed.</p>
+                <p>{props.data.totalMinted} ed.</p>
             </div>
             <div className='marketplace_and_royality'>
                 <p>{marketplace}</p>
-                <p>Royality: {}%</p>
+                <p>Royality: {royalityShares / 10}%</p>
             </div>
             <span className='separate_line'></span>
             <div className='collectors'>
