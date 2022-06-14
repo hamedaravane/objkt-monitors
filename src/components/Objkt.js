@@ -1,11 +1,56 @@
-import React from 'react';
+//import React, {useEffect, useState} from 'react';
 import '../styles/Objkt.css'
-import {Link} from "react-router-dom";
 
 const Objkt = (props) => {
 
+    // const [content, setContent] = useState([])
+    //
+    // const fetchData = async (id) => {
+    //     const response = await fetch("https://data.objkt.com/v2/graphql", {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({
+    //             query: `query MyQuery {
+    //                       event_by_pk(id: "${id}") {
+    //                         id
+    //                         amount
+    //                         creator_address
+    //                         currency_id
+    //                         event_type
+    //                         fa_contract
+    //                         price
+    //                         recipient_address
+    //                         timestamp
+    //                         marketplace {
+    //                           name
+    //                         }
+    //                         creator {
+    //                           address
+    //                           alias
+    //                           twitter
+    //                         }
+    //                         marketplace_event_type
+    //                       }
+    //                     }`,
+    //             variables: {},
+    //         }),
+    //     })
+    //     const data = await response.json()
+    //     setContent(data)
+    // }
+    //
+    //
+    // useEffect(() => {
+    //     fetchData(props.data.id)
+    // })
+
+    //console.log(content)
+
     const ipfs = props.data.metadata.displayUri;
     const imageUri = ipfs.replace("ipfs://", "https://ipfs.io/ipfs/")
+    //console.log(imageUri)
 
     let marketplace = ''
     switch (props.data.contract.alias) {
@@ -53,8 +98,8 @@ const Objkt = (props) => {
         }
     }
 
-    let  price = 0;
-    if (props.data.balancesCount){
+    let price = 0;
+    if (props.data.balancesCount) {
         price = props.data.balancesCount;
     }
 
