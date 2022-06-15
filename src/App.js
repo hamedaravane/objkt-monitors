@@ -21,6 +21,7 @@ function App() {
     const stayWarm = 'KT1GvccrburpbWwiLdBWZXvMt9oZUiTdYSY8'
     const gap = 'KT1GA6KaLWpURnjvmnxB4wToErzM2EXHqrMo'
     const mcLaren = 'KT1PEGqt5rMmHpyaMXc8RFTFkkAUDrzSFRWk'
+    const kalamint = 'KT1A5P4ejnLix13jtadsfV9GCnXLMNnab8UT'
 
     const fetchData = async () => {
         available = false

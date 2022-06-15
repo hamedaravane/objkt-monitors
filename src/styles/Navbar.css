@@ -55,10 +55,18 @@ a{
 }
 .connect_wallet_button{
 
+    display: flex;
+    flex-direction: row;
+
     border: none;
 
-    width: 127px;
-    height: 31px;
+    width: 145px;
+    height: 32px;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 5px 10px 5px 10px;
 
     background: #528DFF;
     color: #F7F7F7;

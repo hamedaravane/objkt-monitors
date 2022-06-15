@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../assets/tezos-nft-analyctics-logo.png'
 import {Link} from "react-router-dom";
 import "../styles/Navbar.css"
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 
 
 const Navbar = () => {
@@ -17,7 +18,7 @@ const Navbar = () => {
                 <Link to="/Contact">Contact</Link>
                 <Link to="/Help">Help</Link>
             </div>
-            <button className="connect_wallet_button">Connect Wallet</button>
+            <button className="connect_wallet_button"><AccountBalanceWalletIcon fontSize={"small"}/>Connect Wallet</button>
         </div>
     );
 };

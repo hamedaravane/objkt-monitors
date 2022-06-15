@@ -14,7 +14,7 @@
 }
 
 .image{
-    width: 100%;
+    width: 198px;
     height: 198px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -36,6 +36,15 @@ p{
     justify-content: space-between;
     color: #F7F7F7;
     padding: 5px 5px;
+}
+
+.creator{
+    display: flex;
+    flex-direction: row;
+}
+
+.creator p{
+    padding-left: 5px;
 }
 
 .marketplace_and_royality{

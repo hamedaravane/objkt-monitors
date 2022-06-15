@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import '../styles/Objkt.css'
 import Royality from "./Royality";
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 const Objkt = (props) => {
 
@@ -24,8 +26,15 @@ const Objkt = (props) => {
         case 'Versum Items':
             marketplace = "Versum";
             break;
+        case 'KALAM':
+            marketplace = "kalamint";
+            break;
         default:
             marketplace = props.data.contract.alias;
+    }
+
+    if (marketplace.length > 20) {
+        marketplace = marketplace.substr(0, 4) + '...' + marketplace.substr(-3, 4);
     }
 
     let creatorText = ''
@@ -58,41 +67,48 @@ const Objkt = (props) => {
         price = props.data.balancesCount;
     }
 
+    const edition = props.data.totalMinted
+    if (marketplace.length > 9999) {
+        marketplace = '+9999'
+    }
+
     return (
         <div className='objkt'>
             <a href={marketUrl} target="_blank" rel="noopener noreferrer">
                 <img className="image" src={imageUri}/>
             </a>
             <div className='creator_and_edition'>
-                <a href={marketArtistUrl} target="_blank" rel="noopener noreferrer">
+                <a className='creator' href={marketArtistUrl} target="_blank" rel="noopener noreferrer">
+                    <AccountBoxIcon fontSize={"small"}/>
                     <p>{creatorText}</p>
                 </a>
-                <p>{props.data.totalMinted} ed.</p>
+                <p>{edition} ed.</p>
             </div>
             <div className='marketplace_and_royality'>
                 <p>{marketplace}</p>
-                <p>Royality: {royalityShares/10}%</p>
+                {/*<p>Royality: {royalityShares/10}%</p>*/}
             </div>
-            <span className='separate_line'></span>
-            <div className='collectors'>
-                <p>Collectors</p>
-                <div className='percentage'>
-                    <div className='percentage_container'>
-                        <div className='percentage_bar'></div>
-                    </div>
-                    <p>34%</p>
-                </div>
-            </div>
-            <div className='sale_chance'>
-                <p>Sale Chance</p>
-                <div className='percentage'>
-                    <div className='percentage_container'>
-                        <div className='percentage_bar'></div>
-                    </div>
-                    <p>34%</p>
-                </div>
-            </div>
-            <button className='buy_button'>{price}tz</button>
+            {/*<span className='separate_line'></span>*/}
+            {/*<div className='collectors'>*/}
+            {/*    <p>Collectors</p>*/}
+            {/*    <div className='percentage'>*/}
+            {/*        <div className='percentage_container'>*/}
+            {/*            <div className='percentage_bar'></div>*/}
+            {/*        </div>*/}
+            {/*        <p>34%</p>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+            {/*<div className='sale_chance'>*/}
+            {/*    <p>Sale Chance</p>*/}
+            {/*    <div className='percentage'>*/}
+            {/*        <div className='percentage_container'>*/}
+            {/*            <div className='percentage_bar'></div>*/}
+            {/*        </div>*/}
+            {/*        <p>34%</p>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+            {/*<button className='buy_button'><ShoppingBagIcon fontSize={"small"}/>{price}tz</button>*/}
+
         </div>
     );
 };
