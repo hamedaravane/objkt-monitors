@@ -6,8 +6,8 @@
     margin-bottom: 20px;
 
     position: relative;
-    width: 198px;
-    height: auto;
+    width: min-content;
+    height: min-content;
 
     background: #464646;
     border-radius: 10px;

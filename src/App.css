@@ -14,8 +14,8 @@ body {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    width: 100%;
-    column-gap: 60px;
+    width: 60%;
+    gap: 20px;
     align-items: center;
     margin: 30px;
 }
