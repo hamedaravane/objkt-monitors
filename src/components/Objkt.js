@@ -71,7 +71,7 @@ const Objkt = (props) => {
             </div>
             <div className='marketplace_and_royality'>
                 <p>{marketplace}</p>
-                <p>Royality: %</p>
+                <p>Royality: {royalityShares/10}%</p>
             </div>
             <span className='separate_line'></span>
             <div className='collectors'>
