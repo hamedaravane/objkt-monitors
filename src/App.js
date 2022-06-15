@@ -4,6 +4,8 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Live from "./pages/Live"
 import Objkt from "./components/Objkt";
 import {useState, useEffect} from "react";
+import {Helmet} from "react-helmet";
+
 
 let available = false
 
@@ -44,6 +46,11 @@ function App() {
 
     return (
         <div className="App">
+            <Helmet>
+                <title>Tezos NFT Analytic</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+                <meta name="description" content="check latest sale ive on tezos marketplaces"/>
+            </Helmet>
             <Router>
                 <Navbar/>
                 <Routes>
