@@ -5,38 +5,43 @@ import Live from "./pages/Live"
 import Objkt from "./components/Objkt";
 import {useState, useEffect} from "react";
 import {Helmet} from "react-helmet";
-const signalR = require("@microsoft/signalr");
+
+
+let available = false
 
 function App() {
 
-    const [objkt, setObjkt] = useState('');
+    const [content, setContent] = useState([])
 
-    const connection = new signalR.HubConnectionBuilder()
-        .withUrl("https://api.tzkt.io/v1/events")
-        .build();
+    const versum = 'KT1LjmAdYQCLBjwv4S2oFkEzyHVkomAf5MrW'
+    const tezotopia = 'KT1ViVwoVfGSCsDaxjwoovejm1aYSGz7s2TZ'
+    const blindgallery = 'KT1D8Q4HEMzoiBaGSVDdTTYMq9phz98WizVQ'
+    const fxhash = 'KT1U6EHmNxJTkvaWJ4ThczG4FSDaHC21ssvi'
+    const dogami = 'KT1NVvPsNDChrLRH5K2cy6Sc9r1uuUwdiZQd'
+    const materia = 'KT1KRvNVubq64ttPbQarxec5XdS6ZQU4DVD2'
+    const moonCakes = 'KT1CzVSa18hndYupV9NcXy3Qj7p8YFDZKVQv'
+    const stayWarm = 'KT1GvccrburpbWwiLdBWZXvMt9oZUiTdYSY8'
+    const gap = 'KT1GA6KaLWpURnjvmnxB4wToErzM2EXHqrMo'
+    const mcLaren = 'KT1PEGqt5rMmHpyaMXc8RFTFkkAUDrzSFRWk'
+    const kalamint = 'KT1A5P4ejnLix13jtadsfV9GCnXLMNnab8UT'
 
-    async function init() {
-        // open connection
-        await connection.start();
-        // subscribe to head
-        await connection.invoke("SubscribeToTokenTransfers");
-        // subscribe to account transactions
-        await connection.invoke("transfers", {
-        });
-    };
+    const fetchData = async () => {
+        available = false
+        const response = await fetch(`https://staging.api.tzkt.io/v1/tokens?sort.desc=lastLevel&contract.ni=${tezotopia},${blindgallery},${fxhash},${dogami},${materia},${moonCakes},${gap},${stayWarm},${mcLaren}&transfersCount.gt=2&metadata.displayUri.ne=true&limit=24`)
+        const data = await response.json()
+        setContent(data)
+        available = true
+    }
+    const timer = setInterval(() => available && fetchData(), 10000)
 
-    // auto-reconnect
-    connection.onclose(init);
+    useEffect(() => {
 
-    connection.on("head", (msg) => {
-        console.log(msg);
-    });
+        return () => clearInterval(timer)
+    }, [timer])
 
-    connection.on("operations", (msg) => {
-        console.log(msg);
-    });
-
-    init();
+    useEffect(() => {
+        fetchData()
+    }, [])
 
 
     return (
@@ -44,7 +49,7 @@ function App() {
             <Helmet>
                 <title>Tezos NFT Analytic</title>
                 <link rel="canonical" href="http://mysite.com/example" />
-                <meta name="description" content="check latest sale ive"/>
+                <meta name="description" content="check latest sale ive on tezos marketplaces"/>
             </Helmet>
             <Router>
                 <Navbar/>
@@ -54,7 +59,7 @@ function App() {
             </Router>
 
             <div className='layout'>
-                {/*{content.map(x => <Objkt data={x} key={x.id}/>)}*/}
+                {content.map(x => <Objkt data={x} key={x.id}/>)}
             </div>
 
         </div>
