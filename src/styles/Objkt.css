@@ -6,15 +6,16 @@
     margin-bottom: 20px;
 
     position: relative;
-    width: min-content;
+    width: 198px;
     height: min-content;
 
     background: #464646;
     border-radius: 10px;
+
 }
 
 .image{
-    width: 198px;
+    width: 100%;
     height: 198px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
